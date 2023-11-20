@@ -26,7 +26,7 @@ function addTodo(todo) {
     }
 
     if (todoText) {
-        const todoEl = document.createElement("li");
+        const todoEl = document.createElement("li");    
         // a const variable todoEl is intialised which creates an element using createElement function in whose paranthesis we add the type of element to be generated, in this case li or list-item
         if (todo && todo.completed) {
             todoEl.classList.add("completed");
@@ -70,3 +70,57 @@ function updateLS() {
 
     localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+// button / toggle switch
+const toggle = document.getElementById('toggleBtn');
+const body = document.querySelector('body');
+const toggleBtn = document.getElementById('toggle');
+const header = document.getElementById('header');
+
+toggle.addEventListener('click', function(){
+    // console.log("pressed");
+    this.classList.toggle('fa-sun');
+    if (this.classList.toggle('fa-moon')){
+        body.style.backgroundColor = '#E8FAF8';
+        body.style.transition = '1.5s';
+        
+        toggleBtn.style.transition = '1.5s';
+        toggleBtn.style.backgroundColor = '#E8FAF8';
+        toggleBtn.style.color = 'black';
+        inpchngwhite();
+        // this.classList.remove('fa-moon');
+    }
+    else {
+        body.style.backgroundColor = 'black';
+        toggleBtn.style.backgroundColor = 'black';
+        toggleBtn.style.transition = '1.5s';
+        toggleBtn.style.color = '#ffff00';
+        body.style.transition = '1.5s';
+        inpchngblack();
+    }
+    function inpchngwhite() {
+        input.style.backgroundColor = 'white';
+        input.style.transition = '1.5s';
+        input.style.border = 'none';
+        input.style.color = 'black';
+        todosUL.style.backgroundColor = 'white';
+        todosUL.style.color = 'black';
+        todosUL.style.transition = '1.5s';
+        header.style.color = '#367be3'
+        header.style.textShadow = '4px 8px #85FFF2';
+        header.style.transition = '1.5s';
+        
+    }
+    function inpchngblack() {
+        input.style.backgroundColor = 'black';
+        input.style.border = '.5px solid #b5b5b5';
+        input.style.transition = '1.5s';
+        input.style.color = 'white';
+        todosUL.style.backgroundColor = 'black';
+        todosUL.style.color = 'white';       
+        todosUL.style.transition = '1.5s';
+        header.style.color = '#85FFF2';
+        header.style.textShadow = '4px 8px #367be3';
+        header.style.transition = '1.5s';
+    }
+});
